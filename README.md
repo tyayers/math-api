@@ -1,22 +1,11 @@
 <div align="center">
 
-# Sample REST API - Math Operations
+# Sample REST API - Math Operation running in Apigee
 ## because: why not?
 
 </div>
 
-Exposes math functions through REST API incl. OAS spec for testing purposes
+Exposes math functions through REST API incl. OAS spec for testing purposes, running as an Apigee proxy (no backend)
 
-
-## Install & Run on Firebase
-
-```shell
-# Select target Firebase project
-firebase use <project>
-# Install
-yarn
-# Locally serve
-yarn serve
-# Deploy
-yarn deploy
-```
+### Install and run
+Deploy contents of apiproxy directory as a proxy in Apigee

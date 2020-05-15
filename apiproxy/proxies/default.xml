@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>verify-api-key</Name>
+            </Step>
+            <Step>
+                <Name>remove-query-param-apikey</Name>
+            </Step>
+            <Step>
+                <Name>impose-quota</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <Flows>
+        <Flow name="ping">
+            <Description/>
+            <Request/>
+            <Response>
+                <Step>
+                    <Name>ping</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/ping") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="factorial">
+            <Description/>
+            <Request>
+                <Step>
+                    <Name>Extract-Variables-1</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>factorial</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/factorial/*") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="prime">
+            <Description/>
+            <Request>
+                <Step>
+                    <Name>Extract-Variables-2</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>prime</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/prime/*") and (request.verb = "GET")</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/kaleo-math</BasePath>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="noroute"/>
+</ProxyEndpoint>
