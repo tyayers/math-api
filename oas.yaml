@@ -5,6 +5,8 @@ info:
   description: showcase API with math functions
 servers:
   - url: 'https://emea-poc13-prod.apigee.net/kaleo-math'
+security:
+  - ApiKeyAuth: []
 paths:
   /ping:
     get:
@@ -104,3 +106,8 @@ components:
         result:
           type: array
           items: {}
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: apikey
